@@ -1,12 +1,12 @@
-# Your name:
-# Your student id:
-# Your email:
-# List of who or what you worked with on this homework:
+# Your name: Mohymin Islam
+# Your student id: 88068007
+# Your email: mohymini@umich.edu
+# List of who or what you worked with on this homework: No one
 # If you used Generative AI, say that you used it and also how you used it.
 
 
 ## Import any necessary modules
-
+import random
 
 ## Define class
 
@@ -26,7 +26,21 @@
     
 
     ## define print_answer_frequencies method
+class MagicEightBall:
+    def __init__(self, answers):
+        self.answers = answers
+        self.previous_questions = []
+        self.previous_answers = []
     
+    def __str__(self):
+        return ""
+    
+    def get_fortune(self):
+        return
+    
+    def play_game(self):
+        return
+
 
 # Main function
 def main():
@@ -41,6 +55,7 @@ def main():
     # 5. Call print_answer_frequencies()
 
     # 6. Print the MagicEightBall object 
+    return
 
 
 
