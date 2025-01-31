@@ -33,10 +33,17 @@ class MagicEightBall:
         self.previous_answers = []
     
     def __str__(self):
-        if (self.previous_questions.len() == 0):
-            return ""
-        else:
-            return ""
+        returnStr = "Questions Asked: "
+        for i in self.previous_questions:
+            returnStr += i + ", "
+        if (len(self.previous_questions) > 0): #AI helped me with this part
+            returnStr = returnStr[:-2] # Used AI to remove the last comma
+        returnStr += "\nAnswers given: "
+        for j in self.previous_answers:
+            returnStr += self.answers[j] + ", "
+        if (len(self.previous_answers) > 0):
+            returnStr = returnStr[:-2]
+        return returnStr
     
 
 
@@ -44,7 +51,7 @@ class MagicEightBall:
         if question in self.previous_questions:
             return "I've already answered this question"
         else:
-            random_ans = random.randint(0, self.answers.len()) # get a random index
+            random_ans = random.randint(0, len(self.answers) - 1) # get a random index
             self.previous_answers.append(random_ans) # add the answer index to previous answers
             return self.answers[random_ans] # return random index
 
@@ -66,13 +73,16 @@ class MagicEightBall:
 
 
     def print_answer_frequencies(self):
-        if (self.previous_answers.len() == 0):
+        if (len(self.previous_answers) == 0):
             print("I have not told your fortune yet")
             return
         else:
-            for i in range(0, self.answers.len()):
-                print("The answer '" + str(self.answers[i]) + "’ has been given ", end="")
-                print(str(self.previous_answers.count(i)) + " times")
+            for i in range(0, len(self.answers)):
+                if (self.previous_answers.count(i) == 0):
+                    continue
+                else:
+                    print("The answer '" + str(self.answers[i]) + "’ has been given ", end="")
+                    print(str(self.previous_answers.count(i)) + " times")
         return
 
 # Main function
@@ -83,9 +93,15 @@ def main():
     # 4. Initiate the game play using the play_game() method
     # 5. Call print_answer_frequencies()
     # 6. Print the MagicEightBall object 
-
-    
-
+    possible_answers = ["Hell yeah", "Hell naw", "Go for it", "Take some time to think about it",
+                        "Is that wise?", "Maybe you shouldn't", "That is a bad idea",
+                        "Take a friend with you", "Seek professional help", "Don't even think about it"]
+    yn = ["Yes", "No", "Maybe"]
+    the_orb = MagicEightBall(yn)
+    print(the_orb)
+    the_orb.play_game()
+    the_orb.print_answer_frequencies()
+    print(the_orb)
     return
 
 
