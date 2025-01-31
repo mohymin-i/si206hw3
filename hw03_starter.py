@@ -44,7 +44,6 @@ class MagicEightBall:
         if question in self.previous_questions:
             return "I've already answered this question"
         else:
-            self.previous_questions.append(question) # add the question to the list
             random_ans = random.randint(0, self.answers.len()) # get a random index
             self.previous_answers.append(random_ans) # add the answer index to previous answers
             return self.answers[random_ans] # return random index
@@ -53,8 +52,28 @@ class MagicEightBall:
         return
     
     def play_game(self):
+        user_question = input("Please enter a question: ")
+        while (user_question != "done"):
+            fortune = self.get_fortune(user_question)
+            print(fortune)
+            self.previous_questions.append(user_question)
+            user_question = input("Please enter the next question:")
+            if (user_question == "done"):
+                print("Goodbye")
+                break
+
         return
 
+
+    def print_answer_frequencies(self):
+        if (self.previous_answers.len() == 0):
+            print("I have not told your fortune yet")
+            return
+        else:
+            for i in range(0, self.answers.len()):
+                print("The answer '" + str(self.answers[i]) + "’ has been given ", end="")
+                print(str(self.previous_answers.count(i)) + " times")
+        return
 
 # Main function
 def main():
